@@ -1,0 +1,64 @@
+
+
+Started GET "/entries/new" for 127.0.0.1 at Thu Oct 28 19:05:47 +0900 2010
+  Processing by EntriesController#new as HTML
+Rendered entries/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 13ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/entries/new/ajax_upload?authenticity_token=H33cYOaylx1PuW2O1wLkSwZTvvN1Kp%2FEdoAWwYhLDFE%3D&qqfile=a.png" for 127.0.0.1 at Thu Oct 28 19:05:50 +0900 2010
+  Processing by EntriesController#ajax_upload as */*
+  Parameters: {"qqfile"=>"a.png", "authenticity_token"=>"H33cYOaylx1PuW2O1wLkSwZTvvN1Kp/EdoAWwYhLDFE="}
+DEPRECATION WARNING: RAILS_ROOT is deprecated. Please use ::Rails.root.to_s. (called from /users/amano/Desktop/ajax_upload/app/models/user.rb:5)
+[paperclip] file -b --mime-type '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/a.png20101028-35733-1v4iab5-0' 2>/dev/null
+[paperclip] identify -format %wx%h '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/stream20101028-35733-1doytgg-0.png20101028-35733-1v4iab5-0[0]' 2>/dev/null
+[paperclip] convert '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/stream20101028-35733-1doytgg-0.png20101028-35733-1v4iab5-0[0]' -resize "300x300>" '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/stream20101028-35733-1doytgg-020101028-35733-r0b90p-0' 2>/dev/null
+[paperclip] identify -format %wx%h '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/stream20101028-35733-1doytgg-0.png20101028-35733-1v4iab5-0[0]' 2>/dev/null
+[paperclip] convert '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/stream20101028-35733-1doytgg-0.png20101028-35733-1v4iab5-0[0]' -resize "100x100>" '/var/folders/A1/A1r711T+GGqo+TnfEukiW++++TI/-Tmp-/stream20101028-35733-1doytgg-020101028-35733-1v07m6p-0' 2>/dev/null
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (22.1ms)[0m  INSERT INTO "users" ("avatar_content_type", "avatar_file_name", "avatar_file_size", "avatar_updated_at", "created_at", "updated_at") VALUES ('image/png', 'a.png', 57543, '2010-10-28 10:05:50.760402', '2010-10-28 10:05:52.049513', '2010-10-28 10:05:52.049513')
+[paperclip] Saving attachments.
+[paperclip] saving /tmp/8/medium_a.png
+[paperclip] saving /tmp/8/thumb_a.png
+[paperclip] saving /tmp/8/original_a.png
+Completed 200 OK in 4614ms (Views: 10.5ms | ActiveRecord: 22.4ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateEntries (20101021215944)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20101021215944')
+Migrating to CreateUsers (20101026091500)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20101026091500')
+Migrating to AddAvatarColumsToUser (20101026091624)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "users" ADD "avatar_file_name" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "users" ADD "avatar_content_type" varchar(255)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "users" ADD "avatar_file_size" integer[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "users" ADD "avatar_updated_at" datetime
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20101026091624')[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("entries")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
