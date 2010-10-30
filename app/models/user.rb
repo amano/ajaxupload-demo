@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
   :bucket => ENV['S3_BUCKET'],
   :styles => { :medium => "300x300>", :thumb => "100x100>" },
-  :path => "/tmp/:id/:style_:original_filename",
-  :url  => "/tmp/:id/:style/:original_filename"
+  :path => "/dev/ajaxupload-demo/:id/:style_:original_filename",
+  :url  => "/dev/ajaxupload-demo/:id/:style/:original_filename"
 end
