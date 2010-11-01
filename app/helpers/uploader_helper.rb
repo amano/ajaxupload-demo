@@ -1,7 +1,7 @@
 module UploaderHelper
   def ajax_uploader_script(id, action, options={})
     raw script = <<-EOS
-    <script>
+    <script type="text/javascript">
       function createUploader(){
         var uploader = new qq.FileUploader({
           element: document.getElementById('#{ id }'),
@@ -9,6 +9,9 @@ module UploaderHelper
           debug: true,
           params: {
             authenticity_token: '#{ form_authenticity_token }'
+          },
+          onComplete: function(id, fileName, responseJSON) {
+            location.reload();
           }
         }); 
       }

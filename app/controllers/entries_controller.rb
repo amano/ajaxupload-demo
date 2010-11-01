@@ -2,6 +2,7 @@
 class EntriesController < ApplicationController
   def new
     @entry = Entry.new
+    @users = User.limit(5).order('id DESC')
   end
 
   def ajax_upload
