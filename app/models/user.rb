@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # original_filename: config/initializers/paperclip.rb
   has_attached_file :avatar, 
-  :storage => ENV['S3_BUCKET'],
+  :storage => :s3,
   :s3_credentials => {
     :access_key_id => ENV['S3_KEY'],
     :secret_access_key => ENV['S3_SECRET']
